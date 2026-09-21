@@ -1,11 +1,11 @@
 package org.com.lab.repository;
 
-import org.com.lab.entity.User;
+import org.com.lab.entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
-public interface UserJpaRepository extends JpaRepository<User, String> {
-    boolean existsByUsername(String username);
+public interface UserJpaRepository extends JpaRepository<UserInfo, String> {
+    boolean existsByUserId(String userId);
 
-    Optional<User> findByUsername(String username);
+    Optional<UserInfo> findByUserId(String userId);
 }

@@ -4,11 +4,7 @@ import org.example.javaframework.web.common.InterfaceErrorCode;
 import org.springframework.http.HttpStatus;
 
 public enum LabErrorCode implements InterfaceErrorCode {
-    USER_NOT_FOUND(HttpStatus.NOT_FOUND),
-    USER_ALREADY_EXISTS(HttpStatus.CONFLICT),
-    CHANNEL_NOT_FOUND(HttpStatus.NOT_FOUND),
-    DOMAIN_ACCESS_DENIED(HttpStatus.FORBIDDEN),
-    INVALID_CREDENTIALS(HttpStatus.UNAUTHORIZED);
+    NOT_FOUND_USER_INFO(HttpStatus.NOT_FOUND);
 
     private final HttpStatus httpStatus;
 
