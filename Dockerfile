@@ -1,10 +1,6 @@
-# ---- STAGE 1: build JavaFramework dependency ----
-FROM maven:3.9-eclipse-temurin-21 AS framework
-WORKDIR /fw
-RUN git clone --depth 1 https://github.com/DevFreshman/Java-Framework.git .
-RUN mvn clean install -DskipTests
+ARG FW_TAG=latest
+FROM freethinking04/javaframework-m2:${FW_TAG} AS framework
 
-# ---- STAGE 2: build Lab ----
 FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY --from=framework /root/.m2 /root/.m2
@@ -13,7 +9,6 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# ---- STAGE 3: runtime ----
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
