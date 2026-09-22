@@ -15,7 +15,7 @@ public class UserController {
         this.userServices = userServices;
     }
 
-    @GetMapping("/lab/me")
+    @GetMapping("/me")
     public UserInfoResponse getMe() {
         return userServices.getUserInfo();
     }
